@@ -1,0 +1,10 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { commitment, message } from '../lib/receipt.mjs';
+const salt = 'synthetic-test-salt-with-at-least-32-characters';
+const payment = {id:'demo-1',amountMinor:100,currency:'USD',status:'settled'};
+test('deterministic commitments with canonical field order',()=>assert.equal(commitment(payment,salt),commitment({...payment},salt)));
+test('changes in amount, status or salt change the commitment',()=>{for(const p of [{...payment,amountMinor:101},{...payment,status:'reversed'}]) assert.notEqual(commitment(p,salt),commitment(payment,salt)); assert.notEqual(commitment(payment,salt+'x'),commitment(payment,salt));});
+test('rejects unsafe amounts',()=>{for(const amountMinor of [0,-1,1.5,NaN,Infinity,Number.MAX_SAFE_INTEGER+1]) assert.throws(()=>commitment({...payment,amountMinor},salt));});
+test('rejects invalid identity, currency, status and salt',()=>{for(const p of [{...payment,id:''},{...payment,currency:'usd'},{...payment,status:'pending'}]) assert.throws(()=>commitment(p,salt)); assert.throws(()=>commitment(payment,''));});
+test('public message contains no payment identifiers or amounts',()=>{const payload=JSON.parse(message(commitment(payment,salt))); assert.deepEqual(Object.keys(payload),['schema','commitment']);});
