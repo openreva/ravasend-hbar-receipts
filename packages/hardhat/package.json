@@ -1,0 +1,1 @@
+{"name":"@sh/hardhat","private":true,"version":"1.0.0","scripts":{"test":"node --test test/*.test.mjs","lint":"node --check scripts/receipt.mjs && node --check scripts/verify.mjs","receipt":"node --env-file=.env scripts/receipt.mjs","verify":"node scripts/verify.mjs"},"dependencies":{"@hashgraph/sdk":"2.81.0"},"devDependencies":{"hardhat":"^2.22.18"}}
