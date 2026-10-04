@@ -2,7 +2,7 @@ import { Client, PrivateKey, TopicCreateTransaction, TopicMessageSubmitTransacti
 import { commitment, message } from '../lib/receipt.mjs';
 const { HEDERA_ACCOUNT_ID, HEDERA_PRIVATE_KEY, RECEIPT_SALT } = process.env;
 if (!HEDERA_ACCOUNT_ID || !HEDERA_PRIVATE_KEY || !RECEIPT_SALT) throw new Error('Configure the local .env using .env.example');
-const key = PrivateKey.fromString(HEDERA_PRIVATE_KEY);
+const key = HEDERA_PRIVATE_KEY.startsWith('0x') ? PrivateKey.fromStringECDSA(HEDERA_PRIVATE_KEY.slice(2)) : PrivateKey.fromString(HEDERA_PRIVATE_KEY);
 const client = Client.forTestnet().setOperator(HEDERA_ACCOUNT_ID,key);
 try {
   let topicId = process.env.HEDERA_TOPIC_ID;
