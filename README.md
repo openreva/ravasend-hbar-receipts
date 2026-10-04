@@ -49,7 +49,7 @@ Paste those same values into the web app. Mirror indexing may take time; retry i
 3. Run a real testnet publication and include its Hashscan and mirror links in your submission.
 4. Record a short walkthrough showing successful verification and explain publication versus settlement.
 
-Public-repository scaffold testing and testnet evidence are pending until these steps are actually performed. Do not submit placeholders as transaction evidence.
+Public repository: https://github.com/openreva/ravasend-hbar-receipts. The official scaffold CLI successfully created a clean copy on 4 October 2026. Clean installation, seven tests, lint, production build and a running home-route HTTP 200 check passed. Testnet transaction evidence remains pending. Do not submit placeholders as transaction evidence.
 
 ## Current validation status
 
