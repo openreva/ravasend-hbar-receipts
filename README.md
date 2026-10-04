@@ -49,8 +49,16 @@ Paste those same values into the web app. Mirror indexing may take time; retry i
 3. Run a real testnet publication and include its Hashscan and mirror links in your submission.
 4. Record a short walkthrough showing successful verification and explain publication versus settlement.
 
-Public repository: https://github.com/openreva/ravasend-hbar-receipts. The official scaffold CLI successfully created a clean copy on 4 October 2026. Clean installation, seven tests, lint, production build and a running home-route HTTP 200 check passed. Testnet transaction evidence remains pending. Do not submit placeholders as transaction evidence.
+Public repository: https://github.com/openreva/ravasend-hbar-receipts. The official scaffold CLI successfully created a clean copy on 4 October 2026. Clean installation, seven tests, lint, production build and a running home-route HTTP 200 check passed.
+
+### Verified testnet evidence (4 October 2026)
+
+- Topic: `0.0.10860395`, sequence `1`.
+- [Hashscan transaction](https://hashscan.io/testnet/transaction/0.0.10859049@1791136932.434990308)
+- [Mirror-node receipt](https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.10860395/messages/1)
+- Commitment: `52b3509593e083ea6bec6663d8106f228bbec4e8d6bb45730c1ee41bc44629dd`.
+- CLI verification succeeded at consensus timestamp `1791136938.101680555`. This is a synthetic receipt proving publication, not payment settlement.
 
 ## Current validation status
 
-Seven offline tests pass, including SDK transaction serialization, and the Next.js production build and TypeScript checks pass. No funded-network transaction has been run yet. Dependency scanning currently reports unresolved upstream/transitive advisories, including a critical protobuf advisory in the installed SDK tree; version overrides require a clean-install verification before relying on them. This prototype is not security-audited and must not be used with real funds or customer data.
+Seven offline tests pass, including SDK transaction serialization, and the Next.js production build and TypeScript checks pass. A real testnet publication and mirror-node verification succeeded. Dependency scanning currently reports unresolved upstream/transitive advisories, including a critical protobuf advisory in the installed SDK tree; version overrides require a clean-install verification before relying on them. This prototype is not security-audited and must not be used with real funds or customer data.
